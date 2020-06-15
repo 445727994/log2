@@ -72,7 +72,7 @@ class HomeController extends WechatController
             $goods['tkl'] = $app->tool->createTpwd('萤火淘客', $url, '');
         }
 
-        return view('home.goodsDetail', ['goods' => $goods]);
+        return view('home.goodsDetail', ['goods' => $goods,'footStatus'=>0]);
     }
 
     public function level()

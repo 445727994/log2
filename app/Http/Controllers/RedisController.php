@@ -13,16 +13,16 @@ class RedisController extends Controller
 
     public function testRedis()
     {
-        $id=25;
-        $ids=Hashids::encode($id);
-        $tbkSdk=TbSdk::getInstance()->publisherSave('6200f131dffc671bfc433ZZc773a35c15492be3a90dc2c71121372610',$ids,'');
-        exit;
+//        $id=25;
+//        $ids=Hashids::encode($id);
+//        $tbkSdk=TbSdk::getInstance()->publisherSave('6200f131dffc671bfc433ZZc773a35c15492be3a90dc2c71121372610',$ids,'');
+//        exit;
      // $res=  Ztk::invitedCoed(2);
       $code='';
-      $id=3;
-     $ids=Hashids::encode($id);
-    $res=Ztk::publisher($ids);
-      var_dump($res);
+//      $id=3;
+//     $ids=Hashids::encode($id);
+//    $res=Ztk::publisher($ids);
+//      var_dump($res);
 //        Redis::set('name', 'yhc');
 //        $values = Redis::get('name');
 //        dd($values);
@@ -38,8 +38,8 @@ class RedisController extends Controller
 //        $taobao=new Taobao();
 //       $res= $taobao->wechatTextMsg($kl,$user,$relation_id);
 //       var_dump($res);exit;
-        $start='2020-05-10 19:00:30';
-        $end='2020-05-10 20:00:40';
+        $start='2020-06-14 08:58:30';
+        $end='2020-06-14 08:59:40';
         $rest =Ztk::getOrder($start,$end,2,100);
         var_dump($rest);exit;
         $GetOrder=new GetOrder($rest);

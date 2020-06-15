@@ -12,7 +12,7 @@ class UserOauth extends Model
     public static function checkOauthById($id,$type='tb'){
         $key='oauths_tb_'.$id;
         if(!Cache::get($key)){
-            $taobao=self::query()->where('user_id',$id)->value('taobao');
+            $taobao=self::query()->where('user_id',$id)->value('relation_id');
             if(!$taobao){
                 return false;
             }

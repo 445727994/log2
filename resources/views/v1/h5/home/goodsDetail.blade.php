@@ -121,18 +121,18 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:;" class="aui-header-item-icon select"    style="min-width:0;">
-            <i class="aui-icon aui-icon-share-pd selectVal" onselectstart="return false"></i>
-            <div class="aui-header-drop-down selectList">
-                <div class="aui-header-drop-down-san"></div>
-                <div class="">
-                    <p class="" onclick="location='http://www.a-ui.cn/'" >消息</p>
-                    <p class="" onclick="location='index.html'">首页</p>
-                    <p class="" onclick="location='index.html'">帮助</p>
-                    <p class="" onclick="location='index.html'">分享</p>
-                </div>
-            </div>
-        </a>
+{{--        <a href="javascript:;" class="aui-header-item-icon select"    style="min-width:0;">--}}
+{{--            <i class="aui-icon aui-icon-share-pd selectVal" onselectstart="return false"></i>--}}
+{{--            <div class="aui-header-drop-down selectList">--}}
+{{--                <div class="aui-header-drop-down-san"></div>--}}
+{{--                <div class="">--}}
+{{--                    <p class="" onclick="location='http://www.a-ui.cn/'" >消息</p>--}}
+{{--                    <p class="" onclick="location='index.html'">首页</p>--}}
+{{--                    <p class="" onclick="location='index.html'">帮助</p>--}}
+{{--                    <p class="" onclick="location='index.html'">分享</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </a>--}}
     </header>
     <div class="aui-banner-content aui-fixed-top" data-aui-slider>
         <div class="aui-banner-wrapper">

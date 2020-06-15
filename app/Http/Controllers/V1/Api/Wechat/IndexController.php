@@ -44,7 +44,7 @@ class IndexController extends Controller
                 break;
             case 'text':
                 $relation_id=UserOauth::checkOauthById($user->id);
-                sendMsg::dispatch($message['FromUserName'],$taobao->getOauthUrl($user->id));
+                //sendMsg::dispatch($message['FromUserName'],$taobao->getOauthUrl($user->id));
                 if(!$relation_id){
                     sendMsg::dispatch($message['FromUserName'],'您还没有绑定淘宝，请在浏览器打开下面网址绑定淘宝');
                     sendMsg::dispatch($message['FromUserName'],$taobao->getOauthUrl($user->id));
