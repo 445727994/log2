@@ -62,7 +62,7 @@ class OauthController extends Controller
                     UserOauth::query()->updateOrCreate([
                         'user_id' => $userid,
                     ],$updateArr);
-                    var_dump($updateArr);
+                    var_dump($updateArr);exit;
                     $arr= ['setting' =>$AppSetting,'status'=>0,'msg'=>Setting::getSetting('oauth_suc')];
                 }
             }else{
