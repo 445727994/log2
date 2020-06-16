@@ -54,7 +54,6 @@ class OauthController extends Controller
                         'expire_time' => date('Y-m-d H:i:s', substr($rest->expire_time,0,-3)),
                     ];
                     $relation=TbSdk::getInstance()->publisherSave($updateArr['session_key'],$hashid,'');
-                    var_dump($relation);
                     if($relation){
                         $updateArr['relation_id']=$relation->relation_id??"";
                         $updateArr['account_name']=$relation->account_name??"";
