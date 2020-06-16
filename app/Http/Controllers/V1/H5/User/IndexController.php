@@ -7,6 +7,7 @@
  */
 namespace App\Http\Controllers\V1\H5\User;
 use App\Http\Controllers\Controller;
+use App\Models\Entities\Taobao\TbkOrderLog;
 use App\Models\User\User;
 use EasyWeChat\Factory;
 use Vinkla\Hashids\Facades\Hashids;
@@ -15,8 +16,8 @@ use Vinkla\Hashids\Facades\Hashids;
 class IndexController extends Controller
 {
     public function index(){
-        $user=User::query()->with(['userMoney'])->find(auth('h5wechat')->id());
-        $user->wx_nickname=base64_decode($user->wx_nickname);
+        $user=User::query()->find(auth('h5wechat')->id());
+        $user->userPreCredit=TbkOrderLog::getUserPreCredit($user->id);
         return view('user/index',['user'=>$user,'footStatus'=>4]);
     }
     public function invitation(){
@@ -24,7 +25,6 @@ class IndexController extends Controller
         $config = config('wechat.official_account.default');
         $app = Factory::officialAccount($config);
         $userCode=Hashids::encode(auth('h5wechat')->id());
-
         $result = $app->qrcode->temporary($userCode, 6 * 24 * 3600);
         $url = $app->qrcode->url($result['ticket']);
         return view("user/invitation",['userInvited'=>$userInvited,'url'=>$url,'footStatus'=>4]);

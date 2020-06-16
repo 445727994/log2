@@ -51,7 +51,7 @@ class OrderController extends Controller
             $tbkOrders = $this->repository->paginate(10)->all();
             return json(200,'订单数据返回',$tbkOrders);
         }
-        return view('user/order',['user'=>auth("h5wechat")->user(),'status'=>\request()->get('status',0)]);
+        return view('user/order',['user'=>auth("h5wechat")->user(),'footStatus'=>4,'status'=>\request()->get('status',0)]);
         //return view('tbkOrders.index', compact('tbkOrders'));
     }
 
@@ -71,6 +71,6 @@ class OrderController extends Controller
                 'data' => $tbkOrder,
             ]);
         }
-        return view('user/orderDetail', compact('tbkOrder'));
+        return view('user/orderDetail',['tbkOrder'=>$tbkOrder,'footStatus'=>4]);
     }
 }

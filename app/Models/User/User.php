@@ -41,7 +41,7 @@ class User extends Model {
 		'email_verified_at' => 'datetime',
 	];
 	const AllField=['id','name','email','mobile','wx_openid','wx_nickname',
-        'wx_head_img','level','invited_id','related','team_id'
+        'wx_head_img','level_id','invited_id','related','team_id','team'
     ];
 	//定义普通字段
 	const FIELD = [
@@ -92,10 +92,10 @@ class User extends Model {
         return Cache::get($key);
     }
     public static function getUserByRelated($related){
-        $key="user_related_".$related;
+        $key="user_related_id_".$related;
         $user=Cache::get($key);
         if(!$user){
-            $user=UserOauth::query()->where('openid',$related)->value('user_id');
+            $user=UserOauth::query()->where('relation_id',$related)->value('user_id');
             Cache::add($key,$user,3600);
         }
         $userId=Cache::get($key);

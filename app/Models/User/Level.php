@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class Level extends Model {
     protected $table = 'user_level';
     use Notifiable;
-    const AllField=['id','team','up','commission','level_id','recommend_nums','is_auto'];
+    const AllField=['id','team','up','commission','recommend_nums','is_auto'];
     protected $guarded = [];
     /**
      * The attributes that should be cast to native types.

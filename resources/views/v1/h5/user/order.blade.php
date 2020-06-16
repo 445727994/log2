@@ -1,7 +1,14 @@
 @extends('layouts.app')
 @section('title', e($setting['app_name']))
 @section('content')
-
+<style>
+    .aui-btn-purchase ,.aui-list-title-btn span{
+        font-size: .8rem;
+    }
+    .aui-list-title-btn span{
+        color: red;
+     }
+</style>
     <header class="aui-header-default aui-header-fixed  aui-header-clear-bg">
         <a href="javascript:history.back(-1)" class="aui-header-item">
             <i class="aui-icon aui-icon-back"></i>
@@ -117,7 +124,7 @@
         })
         function money($arr) {
             if($arr[0]!='' && $arr[0]!=undefined){
-                return '佣金：'+$arr[0].credit;
+                return '返：'+$arr[0].credit;
             }
             return "";
         }
@@ -165,7 +172,7 @@
                         <div class="aui-list-product-fl-mes">
                             <div>
 									<span class="aui-list-product-item-price">
-										<em>¥</em>
+										<em>付：¥</em>
 										<% item.final_price %>
 									</span>
                                 {{--                                <span class="aui-list-product-item-del-price">--}}
@@ -181,8 +188,8 @@
             </div>
             <div class="aui-list-title-btn">
                 <span><% money(item.tbk_order_log) %></span>
-{{--                <a href="{{url('user/orderDetail')}}?id=<% item.id %>" class="red-color">订单详情</a>--}}
-                <a href="javaScript:;" class="red-color">订单详情</a>
+
+                <a href="{{url('user/orderDetail')}}?id=<% item.id %>" class="red-color">订单详情</a>
             </div>
             <div class="aui-dri"></div>
         </li>

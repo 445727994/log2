@@ -27,15 +27,15 @@
                         <div class="aui-me-content-item-img">
                             <img src="{{$user['wx_head_img']}}" alt="">
                         </div>
-                        <div class="aui-me-content-item-title">{{$user['wx_nickname']}}</div>
+                        <div class="aui-me-content-item-title" style="padding-left: 18px;">{{$user['wx_nickname']}}</div>
                     </div>
                     <div class="aui-me-content-item-text">
                         <a href="">
-                            <span>{{$user['credit']}}</span>
+                            <span class="f-red">{{$user['credit']??0.00}}</span>
                             <span>佣金</span>
                         </a>
                         <a href="">
-                            <span>{{$user['userMoney']['predict_money']}}</span>
+                            <span class="f-red" >{{$user['userPreCredit']??0.00}}</span>
                             <span>待结算</span>
                         </a>
                         {{--                    <a href="my-orders.html">--}}

@@ -35,7 +35,6 @@ class IndexController extends Controller
         if(!$user){
             event(new Register($message,$app));
         }
-
         switch ($message['MsgType']) {
             case 'event':
                 if(isset($message['Event'])&&$message['Event']=='subscribe'){
@@ -45,7 +44,7 @@ class IndexController extends Controller
             case 'text':
                 $relation_id=UserOauth::checkOauthById($user->id);
                 if(!$relation_id){
-                    sendMsg::dispatch($message['FromUserName'],'您还没有绑定淘宝，请在浏览器打开下面网址绑定淘宝');
+                    sendMsg::dispatch($message['FromUserName'],'您还没有绑定淘宝，请在淘宝搜索框中打开进行授权 或 通过浏览器打开下面网址登录淘宝绑定淘宝账户');
                     sendMsg::dispatch($message['FromUserName'],$taobao->getOauthUrl($user->id));
                 }
                 $this->returnText($message,$taobao,$user,$relation_id);

@@ -45,7 +45,7 @@
             <span class="aui-footer-item-icon aui-icon aui-footer-icon-find"></span>
             <span class="aui-footer-item-text">链接转换</span>
         </a>
-        <a href="car.html" class="aui-footer-item <?php if($footStatus==3): ?>  aui-footer-active <?php endif; ?>">
+        <a href="Javascript:;" class="aui-footer-item <?php if($footStatus==3): ?>  aui-footer-active <?php endif; ?>">
             <span class="aui-footer-item-icon aui-icon aui-footer-icon-car"></span>
             <span class="aui-footer-item-text">待开发</span>
         </a>

@@ -37,7 +37,7 @@ class OrderCriteria implements CriteriaInterface
             $model = $model->where('ordernum',$keywords);
         }
         if(!empty($userId)){
-          //  $model=$model->where('user_id',$userId);
+            $model=$model->where('user_id',$userId);
         }
         $orderType = request('orderType', 0);
         $orderType = $orderType == 0 ? "desc" : 'asc';
@@ -47,11 +47,8 @@ class OrderCriteria implements CriteriaInterface
         } else {
             $model = $model->orderBy($order, $orderType);
         }
-        $model= $model->with(['tbkOrderLog' => function($query) {  //city对应上面province模型中定义的city方法名  闭包内是子查询
-            if(!empty($userId)){
-                return $query->select('*')->where('user_id',$userId);
-            }
-            return $query->select('*');
+        $model= $model->with(['tbkOrderLog' => function($query) use ($userId)  {  //city对应上面province模型中定义的city方法名  闭包内是子查询
+            $query->where('user_id',$userId);
         }]);
         return $model;
     }

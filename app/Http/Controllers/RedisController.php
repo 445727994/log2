@@ -6,8 +6,9 @@ use App\Jobs\Taoke\GetOrder;
 use App\Tools\Tbk\TbSdk;
 use App\Tools\Tbk\V1\Taobao;
 use App\Tools\Tbk\Ztk;
+use Illuminate\Support\Facades\Artisan;
 use Vinkla\Hashids\Facades\Hashids;
-
+use Illuminate\Support\Facades\Cache;
 class RedisController extends Controller
 {
 
@@ -38,10 +39,11 @@ class RedisController extends Controller
 //        $taobao=new Taobao();
 //       $res= $taobao->wechatTextMsg($kl,$user,$relation_id);
 //       var_dump($res);exit;
+
+       // Artisan::call('cache:clear');
         $start='2020-06-14 08:58:30';
         $end='2020-06-14 08:59:40';
         $rest =Ztk::getOrder($start,$end,2,100);
-        var_dump($rest);exit;
         $GetOrder=new GetOrder($rest);
         $GetOrder->handle();
 //        $this->repository->pushCriteria(new OrderCriteria());

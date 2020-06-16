@@ -26,15 +26,15 @@
                         <div class="aui-me-content-item-img">
                             <img src="<?php echo e($user['wx_head_img'], false); ?>" alt="">
                         </div>
-                        <div class="aui-me-content-item-title"><?php echo e($user['wx_nickname'], false); ?></div>
+                        <div class="aui-me-content-item-title" style="padding-left: 18px;"><?php echo e($user['wx_nickname'], false); ?></div>
                     </div>
                     <div class="aui-me-content-item-text">
                         <a href="">
-                            <span><?php echo e($user['credit'], false); ?></span>
+                            <span class="f-red"><?php echo e($user['credit']??0.00, false); ?></span>
                             <span>佣金</span>
                         </a>
                         <a href="">
-                            <span><?php echo e($user['userMoney']['predict_money'], false); ?></span>
+                            <span class="f-red" ><?php echo e($user['userPreCredit']??0.00, false); ?></span>
                             <span>待结算</span>
                         </a>
                         
