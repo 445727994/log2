@@ -62,7 +62,7 @@ class OauthController extends Controller
                     UserOauth::query()->updateOrCreate([
                         'user_id' => $userid,
                     ],$updateArr);
-                    var_dump($updateArr);exit;
+                    var_dump($updateArr);
                     $arr= ['setting' =>$AppSetting,'status'=>0,'msg'=>Setting::getSetting('oauth_suc')];
                 }
             }else{
@@ -70,6 +70,7 @@ class OauthController extends Controller
             }
         }
 $arr['footStatus']=0;
+        exit;
         return view('taobao.oauth',$arr);
     }
     public  function  relationCallback(){

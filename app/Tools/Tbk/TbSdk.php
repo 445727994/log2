@@ -42,7 +42,7 @@ class TbSdk{
         $req->setNote($note);
         $req->setRegisterInfo($info);
         $resp =$this->c->execute($req, $sessionKey);
-        var_dump( $resp->data);
+        var_dump( $resp);
         if(isset($resp->data)){
             return $resp->data;
         }
