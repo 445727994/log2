@@ -15,7 +15,7 @@ class Orc extends Model
     {
 
     }
-    public static function getScenes($name='type'){
+    public static function getScenes($name='scenes'){
         $key='orc_scenes_';
         if(!Cache::get($key)){
             $scenes=self::query()->pluck($name, 'id');;
@@ -28,9 +28,9 @@ class Orc extends Model
     }
     public static function returnWecaht(){
         $scenes=self::getScenes();
-        $msg='回复以下数字进行对应识别：\n';
+        $msg="回复以下数字进行对应识别：\\n";
         foreach ($scenes as $k=>$v){
-            $msg.=$k.','.$v;
+            $msg.=$k.",".$v."\\n";
         }
         return $msg;
     }

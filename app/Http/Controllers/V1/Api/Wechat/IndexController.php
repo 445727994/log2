@@ -50,17 +50,18 @@ class IndexController extends Controller
                     sendMsg::dispatch($message['FromUserName'],$taobao->getOauthUrl($user->id));
                 }
                 //如有redis缓存则进行图片搜索
-//                $cacheKey=$message['FromUserName'].'_orc_img';
-//                if(Cache::get($cacheKey)){
-//
-//                }else{
-//                    $this->returnText($message,$taobao,$user,$relation_id);
-//                }
+                $cacheKey=$message['FromUserName'].'_orc_img';
+                if(Cache::get($cacheKey)){
+
+                }else{
+                    $this->returnText($message,$taobao,$user,$relation_id);
+                }
                 break;
             case 'image':
                 //识别 返回识别id
-//                sendMsg::dispatch($message['FromUserName'],Orc::returnWecaht());
-                sendMsg::dispatch($message['FromUserName'],$message['image']??"");
+                //$message['PicUrl'];
+                Cache::add($message['FromUserName'].'_orc_img',$message['PicUrl'],300);
+                sendMsg::dispatch($message['FromUserName'],Orc::returnWecaht());
                 break;
             case 'voice':
 
@@ -99,6 +100,7 @@ class IndexController extends Controller
         }
     }
     public function text(){
+        var_dump(Orc::returnWecaht());exit;
         $config = config('wechat.official_account.default');
         $taobao=new Taobao();
         $app = Factory::officialAccount($config);
