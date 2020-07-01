@@ -22,8 +22,8 @@ class H5Middleware
 
         //进行登录
         $wechat = session('wechat.oauth_user.default');
-        $res=User::query()->where('id',7)->first();
-        auth('h5wechat')->login($res);
+//        $res=User::query()->where('id',7)->first();
+//        auth('h5wechat')->login($res);
         //查询用户
         $user=auth('h5wechat')->user();
         if(!$user){
