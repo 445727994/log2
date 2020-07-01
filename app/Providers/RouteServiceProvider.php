@@ -76,8 +76,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('api')->namespace($this->namespace.'\V1')->prefix('api')->group(base_path('routes/v1/api.php'));
     }
     protected  function mapV1H5Routes(){
-        Route::middleware(['web','h5'])->namespace($this->namespace.'\V1')->group(base_path('routes/v1/h5.php'));
-      //  Route::middleware(['web','wechat.oauth','h5'])->namespace($this->namespace.'\V1')->group(base_path('routes/v1/h5.php'));
+       // Route::middleware(['web','h5'])->namespace($this->namespace.'\V1')->group(base_path('routes/v1/h5.php'));
+      Route::middleware(['web','wechat.oauth','h5'])->namespace($this->namespace.'\V1')->group(base_path('routes/v1/h5.php'));
     }
 //    protected function mapApiV1Routes()
 //    {
