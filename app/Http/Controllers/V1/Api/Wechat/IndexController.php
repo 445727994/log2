@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1\Api\Wechat;
 use App\Events\User\Register;
 use App\Http\Controllers\Controller;
 use App\Jobs\Wechat\sendMsg;
+use App\Models\Bd\Orc;
 use App\Models\Setting\Setting;
 use App\Models\Taoke\UserOauth;
 use App\Models\User\User;
@@ -12,6 +13,7 @@ use App\Models\Wechat\WechatLog;
 use App\Models\Wechat\WechatMsg;
 use App\Tools\Tbk\V1\Taobao;
 use EasyWeChat\Factory;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -47,9 +49,18 @@ class IndexController extends Controller
                     sendMsg::dispatch($message['FromUserName'],'您还没有绑定淘宝，请在淘宝搜索框中打开进行授权 或 通过浏览器打开下面网址登录淘宝绑定淘宝账户');
                     sendMsg::dispatch($message['FromUserName'],$taobao->getOauthUrl($user->id));
                 }
-                $this->returnText($message,$taobao,$user,$relation_id);
+                //如有redis缓存则进行图片搜索
+                $cacheKey=$message['FromUserName'].'_orc_img';
+                if(Cache::get($cacheKey)){
+
+                }else{
+                    $this->returnText($message,$taobao,$user,$relation_id);
+                }
                 break;
             case 'image':
+                //识别 返回识别id
+                sendMsg::dispatch($message['FromUserName'],Orc::returnWecaht());
+                sendMsg::dispatch($message['FromUserName'],$message['image']);
                 break;
             case 'voice':
 
